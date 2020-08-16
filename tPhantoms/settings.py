@@ -76,7 +76,6 @@ WSGI_APPLICATION = 'tPhantoms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-//mysql://bd8685999923ea:2098fe7a@us-cdbr-east-02.cleardb.com/heroku_061a04b3f991756?reconnect=true
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
