@@ -26,7 +26,7 @@ SECRET_KEY = '%87w4vwdvag$ry3h_bks(ifg729xbi%1g_)%r3ur(3bylv!#xj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['yummynus.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['yummynus.herokuapp.com','127.0.0.1']
 # 'yummynus.herokuapp.com'
 
 # Application definition
