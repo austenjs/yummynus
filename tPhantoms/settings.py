@@ -76,13 +76,14 @@ WSGI_APPLICATION = 'tPhantoms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# mysql://b11696be62b2d8:177378df@us-cdbr-east-02.cleardb.com/heroku_bf54282bf45f715?reconnect=true
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_061a04b3f991756',
-        'USER': 'bd8685999923ea',
+        'NAME': 'heroku_bf54282bf45f715',
+        'USER': 'b11696be62b2d8',
         'host': 'us-cdbr-east-02.cleardb.com',
-        'password':'2098fe7a'
+        'password':'177378df'
     }
 }
 
