@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'yummyNUS/images/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'yummyNUS/images/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'yummyNUS/images/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'yummyNUS/images/site.webmanifest' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'yummyNUS/CSS/style.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> <!-- using bootstrap -->
+
+	<title>yummyNUS</title>
+
+</head>
+
+<body id="actlbg">
+	<div class="allButFooter">	
+		<div>
+			<header>
+			    <nav id="navbar" class="navbar navbar-expand-lg navbar-light sticky-top" >
+						<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'yummyNUS/images/logo3.png' %}" style="height:60px; width:90px" alt="yummyNUS logo"></a>
+			        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdown" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			            <span class="navbar-toggler-icon"></span>
+			        </button>
+			        <div class="collapse navbar-collapse" id="dropdown">
+			            <div class="navbar-nav">
+				            <a class="nav-item nav-link active" href="{% url 'home' %}">Home</a>
+										<a class="nav-item nav-link active" href="{% url 'stalls' %}">Stalls</a>
+										<a class="nav-item nav-link active" href="{% url 'navi' %}">Map</a>
+										<!-- <a class="nav-item nav-link active" href="">FAQ</a> -->
+										{% if user.is_authenticated %}
+                      <a class="nav-item nav-link active" href="{% url 'logout' %}">Logout</a>
+										{% else %}
+											<a class="nav-item nav-link active" href="{% url 'login' %}">Login</a>
+										{% endif %}
+			            </div>
+			        </div>
+			    </nav>
+			</header>
+		</div>
+
+		<div class="container	">
+			<!-- Search form -->
+			<form class="form-inline d-flex justify-content-center md-form form-sm active-orange active-orange-2 mt-2">
+				<a id="search"><img src="{% static 'yummyNUS/images/search.svg' %}"></a>
+				<i class="fas fa-search" aria-hidden="true"></i>
+				<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+			    aria-label="Search" id="searchBar">
+			</form>
+			
+			<div class="container">
+				<div id="refine">
+						<button type="button" class="refiner-toggle refine" data-toggle="collapse" data-target="#refiner">
+							<a class="refine-brand refine">Refine search</a>
+						</button>
+						<div class="collapse navbar-collapse" id="refiner">
+								<div class="row">
+									<div class="col-sm-6">
+										<span class="category">Location</span>
+										<ul>
+											<li><input type="checkbox" id="YIH">
+											<label for="defaultCheck">YIH</label></li>
+											<li><input type="checkbox" id="U-town" >
+											<label for="defaultCheck">UTown</label></li>
+										</ul>
+									</div>
+									<div class="col-sm-6">
+										<span class="category">Cuisine</span>
+										<ul>
+											<li><input type="checkbox" id="Asian">
+											<label for="defaultCheck">Asian</label></li>
+											<li><input type="checkbox" id="Western">
+											<label for="defaultCheck">Western</label></li>
+											<li><input type="checkbox" id="Vegetarian">
+											<label for="defaultCheck">Vegetarian/Halal</label></li>
+											<li><input type="checkbox" id="Noodle">
+											<label for="defaultCheck">Noodle</label></li>
+											<li><input type="checkbox" id="Drinks">
+											<label for="defaultCheck">Drink</label></li>
+										</ul>
+									</div>
+								</div>
+						</div> 
+					</div>
+			</div>
+
+
+			<div class="col-md-12">
+				<ul class="collection list-group" id="stalls-list">
+					{% for stall in stalls %}
+					<li class="text-center collection-item list-group-item">
+						<h3 class="{{stall.cuisine}} {{stall.location}}"><a href="{{stall.id}}">{{stall}}</a></h3>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer id="main-footer">
+		<div class="footer-container">
+			<div class="container">
+				<p>Copyright &copy; 2020 tPhantoms</p>
+			</div>
+		</div>
+	</footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src ="{% static 'yummyNUS/js/stalls.js' %}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% extends "yummyNUS/base.html" %}
+{% load static %}
+
+{% block body %}
+<div class="allButFooter">
+  <div class="stall-name-cont">
+    <h1 class="text-center stall-name"><strong>{{stall.name}}</strong></h1>
+  </div>
+  <h2 class="text-center"><a href = 'https://www.google.com.sg/maps/place/{{stall.address}}' class="loc-name" target ='_blank'>{{stall.location}}<img src="{% static 'yummyNUS/images/navi2.png' %}"></a></h2>
+  <br>
+    <div class = "col-md-12">
+      <h3 class="text-center stall-name"><strong>Menu List</strong></h3>
+    </div>
+  <div class="container">
+    <div class = "row">
+      <div class="col-md-6">
+          <ul class="list-group" id="food-list">
+            {% for menu in menus|slice:"0::2"  %}
+            <li class="text-center list-collection-item list-group-item">
+              <h5>{{menu.name}} - ${{menu.price}}</h5>
+            </li>
+            {% endfor %}
+          </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group" id="food-list">
+          {% for menu in menus|slice:"1::2"  %}
+          <li class="text-center list-collection-item list-group-item">
+            <h5>{{menu.name}} - ${{menu.price}}</h5>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="text-center list-collection-item review-cont">
+            <h3 ><strong>Reviews</strong></h3>
+          </li> 
+          {% for review in reviews %}
+            <li class="list-collection-item list-group-item text-center">
+              <h5>"{{review.Comment}}"</h5>
+              <h6>Written by <strong>{{review.Name}}</strong></h6>
+              <div class="rating starShown">{{review.Rating}}</div>
+            </li>
+          {% endfor %}
+          {% if user.is_authenticated %}
+          <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center ">
+                    <h4 class="modal-title ">Leave a Review</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <form method="POST" action =''>
+                  <div class="modal-body">
+                    
+                        {%csrf_token%}
+                      <div class="form-group">
+                        <label for="name" class="col-form-label">Name</label>
+                        {{form.Name}}
+                      </div>
+                      <div class="form-group">
+                        <label for="comment" class="col-form-label">Comment</label>
+                        {{form.Comment}}
+                      </div>
+                      <div class="form-group navbar-nav">
+                        <label for="ratings" class="col-form-label">Rating</label>
+                        {{form.Rating}}
+                      </div>                  
+                  </div>
+                  
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button value="Submit" type="submit" class="login100-form-btn btn-unique">Submit Review<i class="fas fa-paper-plane-o ml-1"></i></button>
+                  </div>
+                </form>
+                </div>
+              </div>
+              
+            
+          </div>
+          
+            <div class="container-login100-form-btn m-t-17">
+              <button class="login100-form-btn"  data-toggle="modal" data-target="#modalContactForm">
+                Leave Review
+              </button>
+            </div>
+          {% else %}
+            <li class="text-center list-collection-item list-group-item">
+              <h5><a class="nav-item nav-link active" href="{% url 'login' %}?next={{request.path}}">Please login to give a review</a></h5>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

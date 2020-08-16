@@ -1,0 +1,1 @@
+web: gunicorn tPhantoms.wsgi --log-file -
