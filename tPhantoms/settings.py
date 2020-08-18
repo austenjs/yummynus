@@ -24,7 +24,7 @@ SECRET_KEY = '%87w4vwdvag$ry3h_bks(ifg729xbi%1g_)%r3ur(3bylv!#xj'
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['yummynus.herokuapp.com','127.0.0.1','.yummynus.com','.herokuapp.com']
 # 'yummynus.herokuapp.com'
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'heroku_fa77eed36f412bd',
         'USER': 'becb9a8dc424fe',
-        'host': 'us-cdbr-east-02.cleardb.com',
+        'HOST': 'us-cdbr-east-02.cleardb.com',
         'password':'2274dd0d'
     }
 }
