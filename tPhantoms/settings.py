@@ -24,7 +24,7 @@ SECRET_KEY = '%87w4vwdvag$ry3h_bks(ifg729xbi%1g_)%r3ur(3bylv!#xj'
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['yummynus.herokuapp.com','127.0.0.1','.yummynus.com','.herokuapp.com']
 # 'yummynus.herokuapp.com'
