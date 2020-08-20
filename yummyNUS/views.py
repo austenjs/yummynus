@@ -7,9 +7,7 @@ from datetime import date
 
 # Home page
 def index(request):
-    stall =FoodStall.objects.get(id = abs(int(date.today().strftime("%d"))%8)+3)
-
-    return render(request,"yummyNUS/index.html",{'stall':stall, 'menu':stall.menus.all()}) 
+    return render(request,"yummyNUS/index.html") 
 
 #Stalls Page
 def stalls(request):
