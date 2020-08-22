@@ -1,9 +1,9 @@
-# yummynus
+# yummynus <img src="./yummyNUS/static/yummyNUS/images/logo3.png" width="30" height = "25"/>
 ## Created by Amelia Regina and Austen Jeremy
 
-<img src="Poster.png"
-     alt="Poster"
-     style="float: left; margin-right: 10px;" />
+<p align="center">
+     <img src="./Orbital Final Poster(1).jpg" height="600" width="500" />
+</p>
      
 ## Motivation
 
@@ -43,14 +43,7 @@ Features to be completed by the end of July:
 - Providing daily recommendations 
 
 
-## Diagram
-
-<img src="Diagram.png"
-     alt="Diagram"
-     style="float: left; margin-right: 10px;" />
-
-
-
+## Frontend and Backend
 For our UI/UX design, we use pure HTML, CSS and JavaScript. We use the Bootstrap library in our CSS. For our backend, we use Django. Using Django helped us to instantly have a page for the admin site. For our database, we use MySQL.
 We made several models on our Django models. There are menu, cuisine, location, review, and foodstall models. Cuisine and location model only have names designated for them in it. The menu model has a cuisine and location model inside of them. The food stall model has properties (class and address) as well as models (menus, location, and reviews). Lastly, the review model has properties (name of the reviewer, comment, and date) as well as models (rating).
 
